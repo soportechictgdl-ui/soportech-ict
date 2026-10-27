@@ -1,0 +1,11 @@
+---
+import WhatsApp from './WhatsApp.astro';
+import type { Silo } from '../lib/site';
+interface Props { silo:Silo }
+const {silo}=Astro.props;
+---
+<section class="section" id="promociones" aria-labelledby="promotions-title"><div class="wrap">
+<p class="eyebrow">Promociones</p><h2 id="promotions-title">Alcance y precio claros<br>antes de comenzar.</h2>
+<p>Por ahora no hay promociones activas publicadas. Consulta una cotización para tu servicio. Confirmamos precio, IVA, vigencia, cobertura y exclusiones antes de agendar.</p>
+<WhatsApp silo={silo} placement="promociones">Consultar opciones disponibles</WhatsApp>
+</div></section>

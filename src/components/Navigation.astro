@@ -6,5 +6,5 @@ const { silo } = Astro.props;
 <nav class="nav" aria-label="Navegación principal">
   {silo !== 'home' && <a href={routes.home}>Inicio</a>}
   {silo === 'home' ? <><a href={routes.b2b}>Empresas</a><a href={routes.b2c}>Hogar</a></> : <><a href="#servicios">Servicios</a>{silo === 'b2b' ? <a href="#planes">Pólizas</a> : <a href="#precios">Precios</a>}<a href="#preguntas">Preguntas</a></>}
-  <a href="#contacto">Contacto</a><a class="btn" href="#contacto">Solicitar asesoría</a>
+  {silo !== 'b2c' && <a href="#promociones">Promociones</a>}<a href="#contacto">Contacto</a><a class="btn" href="#contacto">Solicitar asesoría</a>
 </nav>

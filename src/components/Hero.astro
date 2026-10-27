@@ -1,12 +1,12 @@
 ---
 import WhatsApp from './WhatsApp.astro';
 import type { Silo } from '../lib/site';
-interface Props { silo:Silo; title:string; lead:string; action:string; image:string }
-const {silo,title,lead,action,image}=Astro.props;
+interface Props { silo:Silo; title:string; lead:string; action:string; image:string; positioning?:string }
+const {silo,title,lead,action,image,positioning}=Astro.props;
 ---
 <section class="hero" id="inicio" aria-labelledby="page-title"><div class="wrap hero-inner"><div class="hero-text">
   <p class="eyebrow">{silo==='b2b'?'Empresas y PyMEs':'Atención para el hogar'} · Toda la ZMG</p>
-  <h1 id="page-title">{title}</h1><p class="hero-copy">{lead}</p>
+  <h1 id="page-title">{title}</h1>{positioning && <p class="hero-copy"><strong>{positioning}</strong></p>}<p class="hero-copy">{lead}</p>
   <div class="actions"><WhatsApp silo={silo} placement="hero">{action}</WhatsApp>{silo==='b2b' && <a class="btn btn-outline" href="#planes">Consultar pólizas</a>}</div>
   <p class="hero-note">Atención remota y visitas coordinadas en toda la Zona Metropolitana de Guadalajara: Guadalajara, Zapopan, San Pedro Tlaquepaque, Tonalá, Tlajomulco de Zúñiga y El Salto. Confirma disponibilidad, alcance y cotización antes de comenzar.</p>
 </div><div class="support-visual"><img src={image} width="1536" height="1024" fetchpriority="high" alt={silo==='b2b'?'Imagen conceptual de mantenimiento de equipos en una oficina':'Imagen conceptual de asistencia para una computadora en casa'} /><div class="visual-label"><div><strong>Soporte que se adapta a tu día a día</strong><small>Zapopan · Guadalajara · ZMG</small></div></div></div></div></section>

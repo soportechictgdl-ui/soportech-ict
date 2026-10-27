@@ -32,6 +32,8 @@ for(const route of routes){
   }
   for(const [,tag] of html.matchAll(/(<img\b[^>]*>)/g)){
     assert.match(tag,/width="\d+"/);assert.match(tag,/height="\d+"/);assert.match(tag,/alt="[^"]+"/);
+    const src=tag.match(/src="([^"]+)"/)?.[1];
+    if(src?.startsWith('/')) assert.ok(fs.existsSync(path.join(base,src)),`Missing image ${route} ${src}`);
   }
   assert.ok(Buffer.byteLength(html)<40000,'HTML budget exceeded');
   const visible=html.replace(/<script\b[\s\S]*?<\/script>/g,'').replace(/<[^>]+>/g,' ');
